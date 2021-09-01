@@ -1,0 +1,13 @@
+# Virtual env
+venv/
+
+# Ignore Mac system files
+.DS_Store
+
+# API key
+/credentials.py
+
+# Other
+__pycache__/
+
+.vscode/

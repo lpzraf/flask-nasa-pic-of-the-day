@@ -1,4 +1,4 @@
-## Flask App Using one of NASA's APOD API
+## Flask App Using NASA's APOD API
 
 #### It fetches pictures of the day with image descriptions by a professional astronomer.
 
