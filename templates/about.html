@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block title %}About{% endblock %}
+
+{% block content %}
+    
+    <br>
+    <h2 style="text-align: center"><i class="star icon"></i>NASA's Picture of the Day!<i class="star icon"></i></h2>
+    <h3 style="text-align: center">Built for fun with Python by <a href="https://rafaelopez.com">Rafael Lopez.</a></h3>
+
+    <div style="margin-top: 20px" 
+        class="ui container">
+        <img class="ui big rounded centered image" src="{{data['url']}}" />
+        <div class="ui compact message">
+        <h2>{{data['copyright']}} - {{data['date']}}</h2>
+        <div class="ui container">
+            <p>
+                {{data['explanation']}}
+            </p>
+            </div>
+        </div>
+    </div>
+
+    
+    <!-- divider -->
+    <div class="ui four column centered grid">
+        <div class="column">
+            <div class="ui section divider"></div>
+        </div>
+    </div>
+
+
+{% endblock %}

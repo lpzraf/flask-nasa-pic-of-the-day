@@ -4,11 +4,22 @@
 
 {% block content %}
     
-    <br>
-    <h2 style="text-align: center"><i class="star icon"></i>Check out NASA's Picture of the Day!<i class="star icon"></i></h2>
-    <h3 style="text-align: center">This is a Flask app using NASA's APOD API.</h3>
-    <br>
-    <br>
+    <h2 style="text-align: center"><i class="star icon"></i>NASA's Astronomy Picture of the Day!<i class="star icon"></i></h2>
+    <h3 style="text-align: center">This is a replica website built with Python's Flask using <a href="https://api.nasa.gov/index.html">NASA's APOD API</a>.</h3>
+
+
+    <div style="margin-top: 20px" class="ui container">
+    <img class="ui big rounded centered image" src="{{data['url']}}" />
+    <div class="ui compact message">
+    <h2><i class="camera retro icon"></i>Image by {{data['copyright']}}</h2>
+    <div class="ui container">
+        <p>
+            {{data['explanation']}}
+        </p>
+        </div>
+    </div>
+</div>
+  
 
     
     <!-- divider -->
