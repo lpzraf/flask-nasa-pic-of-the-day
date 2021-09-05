@@ -8,19 +8,55 @@
     <h2 style="text-align: center"><i class="star icon"></i>NASA's Picture of the Day!<i class="star icon"></i></h2>
     <h3 style="text-align: center">Built for fun with Python by <a href="https://rafaelopez.com">Rafael Lopez.</a></h3>
 
-    <div style="margin-top: 20px" 
-        class="ui container">
-        <img class="ui big rounded centered image" src="{{data['url']}}" />
-        <div class="ui compact message">
-        <h2>{{data['copyright']}} - {{data['date']}}</h2>
-        <div class="ui container">
-            <p>
-                {{data['explanation']}}
-            </p>
-            </div>
+    <!-- datepicker -->
+    <h3 style="text-align: center">Pick a range to see our archive of daily images since June 1995.</h3>
+    <div class="ui four column centered grid">
+        <div class="column">
+            <form class="ui form" action="{{ url_for('about') }}" method="post">
+                <div class="two fields">
+                    <div class="field">
+                        <label style="text-align: center">Start date</label>
+                        <div class="ui calendar" id="rangestart">
+                            <div class="ui input left icon">
+                                <i class="calendar icon"></i>
+                                <input type="date" name="start" placeholder="Start">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label style="text-align: center">End date</label>
+                        <div class="ui calendar" id="rangeend">
+                            <div class="ui input left icon">
+                                <i class="calendar icon"></i>
+                                <input type="date" name="end" placeholder="End">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div style="text-align: center">
+                    <button class="ui button" type="submit" style="text-align: center">Submit</button>
+                </div>
+            </form>
         </div>
     </div>
 
+    <!-- carousel -->
+    <div class="ui two column centered grid">
+        <div class="fotorama"
+            data-nav="thumbs"
+            data-loop="true"
+            data-keyboard="true"
+            data-allowfullscreen="native">
+            {% if data is mapping %}
+                <img data-caption="" src="{{data['url']}}">
+            {% else %}
+                {% for img in data %}
+                    <img data-caption="{{img['title']}} by {{img['copyright']}} ({{img['date']}})." src="{{img['url']}}">
+                {% endfor %}
+            {% endif %}
+        </div>
+    </div>
+    <br/>
     
     <!-- divider -->
     <div class="ui four column centered grid">
@@ -28,6 +64,5 @@
             <div class="ui section divider"></div>
         </div>
     </div>
-
 
 {% endblock %}

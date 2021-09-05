@@ -47,3 +47,14 @@ nav li {
 nav li:first-child {
     float: left;
 }
+
+/* datepicker */
+$('#rangestart').calendar({
+    type: 'date',
+    endCalendar: $('#rangeend')
+  });
+$('#rangeend').calendar({
+    type: 'date',
+    startCalendar: $('#rangestart')
+  });
+

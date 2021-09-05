@@ -4,30 +4,27 @@
 
 {% block content %}
     
-    <h2 style="text-align: center"><i class="star icon"></i>NASA's Astronomy Picture of the Day!<i class="star icon"></i></h2>
-    <h3 style="text-align: center">This is a replica website built with Python's Flask using <a href="https://api.nasa.gov/index.html">NASA's APOD API</a>.</h3>
+<h2 style="text-align: center"><i class="star icon"></i>NASA's Astronomy Picture of the Day!<i class="star icon"></i></h2>
+<h3 style="text-align: center">This is a replica website built with Python's Flask using <a href="https://api.nasa.gov/index.html">NASA's APOD API</a>.</h3>
 
 
-    <div style="margin-top: 20px" class="ui container">
+<div style="margin-top: 20px" class="ui container">
     <img class="ui big rounded centered image" src="{{data['url']}}" />
     <div class="ui compact message">
-    <h2><i class="camera retro icon"></i>Image by {{data['copyright']}}</h2>
-    <div class="ui container">
-        <p>
-            {{data['explanation']}}
-        </p>
+        <h2>{{data['title']}} - <i class="camera retro icon"></i>by {{data['copyright']}}</h2>
+        
+        <div class="ui container">
+            <p>{{data['explanation']}}</p>
         </div>
     </div>
-</div>
-  
+</div> 
 
     
-    <!-- divider -->
-    <div class="ui four column centered grid">
-        <div class="column">
-            <div class="ui section divider"></div>
-        </div>
+<!-- divider -->
+<div class="ui four column centered grid">
+    <div class="column">
+        <div class="ui section divider"></div>
     </div>
-
+</div>
 
 {% endblock %}

@@ -1,9 +1,10 @@
-from flask import Flask, render_template, redirect, url_for, json
+from flask import Flask, render_template, request, redirect, url_for, json, session
 import requests
 import credentials
 
-app = Flask(__name__)
 
+app = Flask(__name__)
+app.secret_key = credentials.SECRET_KEY
 
 
 @app.route("/")
@@ -14,12 +15,32 @@ def index():
     return render_template('index.html', data=data)
 
 
-@app.route("/about")
+@app.route("/about", methods=['GET', 'POST'])
 def about():
+    if request.method == "POST":
+        start_date = request.form.get('start')
+        end_date = request.form.get('end')
+        api_key = credentials.API_KEY
+        req = requests.get("https://api.nasa.gov/planetary/apod?api_key=" + 
+                            api_key + "&start_date=" + start_date + 
+                            "&end_date=" + end_date)
+        data = json.loads(req.content)
+        return render_template('about.html', data=data)
+
     api_key = credentials.API_KEY
     req = requests.get("https://api.nasa.gov/planetary/apod?api_key=" + api_key)
     data = json.loads(req.content)
-    return render_template('about.html', data=data)
+    return render_template('about.html', data=data, dt=type(data))
+
+
+# @app.route('/handle_data', methods=['POST'])
+# def handle_data():
+#     start_date = request.form['start']
+#     end_date = request.form['end']
+#     api_key = credentials.API_KEY
+#     req = requests.get("https://api.nasa.gov/planetary/apod?api_key=" + api_key + "&" + start_date + "&" + end_date)
+#     data = json.loads(req.content)
+#     return redirect('/about', data=data) 
 
 
 if __name__ == "__main__":

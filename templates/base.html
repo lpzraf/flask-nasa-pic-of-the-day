@@ -12,13 +12,15 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.js"></script>
     <!-- Semantic ui -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
+    <!-- CSS -->
     <link rel="stylesheet" href="{{ url_for('static', filename='styles/style.css') }}">
 </head>
     <body>
         <nav>
             <ul>
-                <li><a href="{{ url_for('index')}}" class="logo">Logo</a></li>
+                <li><a href="https://github.com/lpzraf/flask-nasa-pic-of-the-day" class="logo"><i class="code icon"></i></a></li>
                 <li><a href="{{ url_for('about')}}">About</a></li>
+                <li><a href="{{ url_for('index')}}"><i class="home icon"></i></a></li>
             </ul>
         </nav>
         <br>
