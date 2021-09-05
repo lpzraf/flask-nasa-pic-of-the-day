@@ -4,8 +4,15 @@ import credentials
 
 
 app = Flask(__name__)
-app.secret_key = credentials.SECRET_KEY
 
+# app name
+@app.errorhandler(404)
+  
+# inbuilt function which takes error as parameter
+def not_found(e):
+  
+# defining function
+  return render_template("404.html")
 
 @app.route("/")
 def index():

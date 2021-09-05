@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block title %}Page Not Found{% endblock %}
+
+{% block content %}
+    
+<h2 style="text-align: center"><i class="star icon"></i>Oh no! Looks like the page doesn't exist<i class="star icon"></i></h2>
+<a href="{{ url_for('index') }}"><p style="text-align: center">Click Here</a> to go to the Home Page</p>
+
+    
+<!-- divider -->
+<div class="ui four column centered grid">
+    <div class="column">
+        <div class="ui section divider"></div>
+    </div>
+</div>
+
+{% endblock %}
