@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for, json, session
+from flask import Flask, render_template, request, redirect, url_for, json
 import requests
 import credentials
 
@@ -21,26 +21,16 @@ def about():
         start_date = request.form.get('start')
         end_date = request.form.get('end')
         api_key = credentials.API_KEY
-        req = requests.get("https://api.nasa.gov/planetary/apod?api_key=" + 
-                            api_key + "&start_date=" + start_date + 
-                            "&end_date=" + end_date)
+        req = requests.get("https://api.nasa.gov/planetary/apod?api_key=" +
+                           api_key + "&start_date=" + start_date +
+                           "&end_date=" + end_date)
         data = json.loads(req.content)
         return render_template('about.html', data=data)
 
     api_key = credentials.API_KEY
     req = requests.get("https://api.nasa.gov/planetary/apod?api_key=" + api_key)
     data = json.loads(req.content)
-    return render_template('about.html', data=data, dt=type(data))
-
-
-# @app.route('/handle_data', methods=['POST'])
-# def handle_data():
-#     start_date = request.form['start']
-#     end_date = request.form['end']
-#     api_key = credentials.API_KEY
-#     req = requests.get("https://api.nasa.gov/planetary/apod?api_key=" + api_key + "&" + start_date + "&" + end_date)
-#     data = json.loads(req.content)
-#     return redirect('/about', data=data) 
+    return render_template('about.html', data=data)
 
 
 if __name__ == "__main__":
