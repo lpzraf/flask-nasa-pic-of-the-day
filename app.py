@@ -1,3 +1,4 @@
+from os import environ
 from flask import Flask, render_template, request, json
 import requests
 import credentials
@@ -15,7 +16,8 @@ def not_found(e):
 # home page
 @app.route("/")
 def index():
-    api_key = credentials.API_KEY
+    # api_key = credentials.API_KEY
+    api_key = environ.get('API_KEY')
     req = requests.get("https://api.nasa.gov/planetary/apod?api_key=" + api_key)
     data = json.loads(req.content)
     return render_template('index.html', data=data)
@@ -27,14 +29,14 @@ def archive():
     if request.method == "POST":
         start_date = request.form.get('start')
         end_date = request.form.get('end')
-        api_key = credentials.API_KEY
+        api_key = environ.get('API_KEY')
         req = requests.get("https://api.nasa.gov/planetary/apod?api_key=" +
                            api_key + "&start_date=" + start_date +
                            "&end_date=" + end_date)
         data = json.loads(req.content)
         return render_template('archive.html', data=data)
 
-    api_key = credentials.API_KEY
+    api_key = environ.get('API_KEY')
     req = requests.get("https://api.nasa.gov/planetary/apod?api_key=" + api_key)
     data = json.loads(req.content)
     return render_template('archive.html', data=data)
