@@ -6,12 +6,13 @@ import credentials
 app = Flask(__name__)
 
 
-# app name
+# 404 page
 @app.errorhandler(404)
 def not_found(e):
     return render_template("404.html")
 
 
+# home page
 @app.route("/")
 def index():
     api_key = credentials.API_KEY
@@ -20,6 +21,7 @@ def index():
     return render_template('index.html', data=data)
 
 
+# img archive page
 @app.route("/image-archive", methods=['GET', 'POST'])
 def archive():
     if request.method == "POST":
