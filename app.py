@@ -1,18 +1,16 @@
-from flask import Flask, render_template, request, redirect, url_for, json
+from flask import Flask, render_template, request, json
 import requests
 import credentials
 
 
 app = Flask(__name__)
 
+
 # app name
 @app.errorhandler(404)
-  
-# inbuilt function which takes error as parameter
 def not_found(e):
-  
-# defining function
-  return render_template("404.html")
+    return render_template("404.html")
+
 
 @app.route("/")
 def index():
