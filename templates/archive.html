@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block title %}About{% endblock %}
+{% block title %}Image Archive{% endblock %}
 
 {% block content %}
     
@@ -12,7 +12,7 @@
     <h3 style="text-align: center">Pick a range to see our archive of daily images since June 1995.</h3>
     <div class="ui four column centered grid">
         <div class="column">
-            <form class="ui form" action="{{ url_for('about') }}" method="post">
+            <form class="ui form" action="{{ url_for('archive') }}" method="post">
                 <div class="two fields">
                     <div class="field">
                         <label style="text-align: center">Start date</label>
@@ -58,11 +58,4 @@
     </div>
     <br/>
     
-    <!-- divider -->
-    <div class="ui four column centered grid">
-        <div class="column">
-            <div class="ui section divider"></div>
-        </div>
-    </div>
-
 {% endblock %}

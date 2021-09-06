@@ -19,12 +19,18 @@
         <nav>
             <ul>
                 <li><a href="https://github.com/lpzraf/flask-nasa-pic-of-the-day" class="logo"><i class="code icon"></i></a></li>
-                <li><a href="{{ url_for('about')}}">About</a></li>
+                <li><a href="{{ url_for('archive')}}">Archive</a></li>
                 <li><a href="{{ url_for('index')}}"><i class="home icon"></i></a></li>
             </ul>
         </nav>
         <br>
         {% block content %}
         {% endblock %}
+        <!-- divider -->
+        <div class="ui four column centered grid">
+            <div class="column">
+                <div class="ui section divider"></div>
+            </div>
+        </div>
     </body>
 </html>
