@@ -2,7 +2,6 @@
 import os
 from flask import Flask, render_template, request, json
 import requests
-import credentials
 
 
 app = Flask(__name__)
